@@ -1,11 +1,17 @@
 name: CI
 on: [push]
+
+env:
+  SSH_ACTIONS: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    
     - name: Setup tmate session
+      if: env.SSH_ACTIONS == 'true'
       uses: mxschmitt/action-tmate@v1
 
       
